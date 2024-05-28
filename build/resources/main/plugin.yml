@@ -1,0 +1,4 @@
+name: ArenaPlugin
+version: '1.0.0'
+main: me.occure.arenaplugin.ArenaPlugin
+api-version: '1.20'

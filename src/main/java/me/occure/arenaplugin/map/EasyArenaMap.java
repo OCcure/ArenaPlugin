@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class EasyArenaMap implements ArenaMap{
+
     private static final int HALF_SIZE = 15;
 
     private final Map<Location, BlockData> removedBlocks = new HashMap<>();
@@ -23,14 +24,14 @@ public class EasyArenaMap implements ArenaMap{
 
         for(int x = -HALF_SIZE; x <= HALF_SIZE; x++){
             for(int z = -HALF_SIZE; z <= HALF_SIZE; z++){
-                Location loc = arenaLoc.clone().add(x,0,z);
+                Location loc = arenaLoc.clone().add(x,-1,z);
                 Block block =loc.getBlock();
                 removedBlocks.put(loc,block.getBlockData());
                 block.setType(Material.DEEPSLATE_BRICKS);
             }
         }
 
-        for(int y = 1; y <= HALF_SIZE*2; y++) {
+        for(int y = 0; y <= HALF_SIZE*2; y++) {
             for (int z = -HALF_SIZE; z <= HALF_SIZE; z++) {
                 for(int x = -HALF_SIZE; x <= HALF_SIZE; x++){
                     Location loc = arenaLoc.clone().add(x,y,z);

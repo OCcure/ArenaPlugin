@@ -1,10 +1,9 @@
 package me.occure.arenaplugin.game;
 
 import com.google.common.collect.Maps;
-import me.occure.arenaplugin.ArenaMonster.ArenaMob;
-import me.occure.arenaplugin.ArenaMonster.EasyArenaMob;
 import me.occure.arenaplugin.arenaPlayre.ArenaPlayer;
 import me.occure.arenaplugin.arenaPlayre.EasyArenaPlayer;
+import me.occure.arenaplugin.game.round.RoundManger;
 import me.occure.arenaplugin.map.ArenaMap;
 import me.occure.arenaplugin.map.EasyArenaMap;
 import org.bukkit.entity.Player;
@@ -25,9 +24,9 @@ public class GameManager {
     public static @NotNull ArenaGameController createGameController(@NotNull Player player){
         ArenaPlayer arenaPlayer = new EasyArenaPlayer(player);
         ArenaMap arenaMap = new EasyArenaMap();
-        ArenaMob arenaMob = new EasyArenaMob();
+        RoundManger roundManger = new RoundManger();
 
-        return new ArenaGameController(arenaPlayer,arenaMap,arenaMob);
+        return new ArenaGameController(arenaPlayer, arenaMap,roundManger);
 
     }
     public static boolean hasGameController(@NotNull Player player) {

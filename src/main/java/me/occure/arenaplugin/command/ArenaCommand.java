@@ -1,6 +1,5 @@
 package me.occure.arenaplugin.command;
 
-import me.occure.arenaplugin.GUI.RewardGUI;
 import me.occure.arenaplugin.game.ArenaGameController;
 import me.occure.arenaplugin.game.GameManager;
 import org.bukkit.command.CommandSender;
@@ -31,9 +30,6 @@ public class ArenaCommand extends BukkitCommand {
             case "stop" -> {
                 ArenaGameController controller = GameManager.getOrCreateGameController(player);
                 controller.stopGame();
-            }
-            case "open" ->{
-                player.openInventory(RewardGUI.openRewardGUI(player));
             }
         }
         return false;

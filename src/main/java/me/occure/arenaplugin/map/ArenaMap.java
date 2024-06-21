@@ -8,4 +8,5 @@ public interface ArenaMap {
     void setup(@NotNull Location playerLoc);
 
     void clear();
+
 }

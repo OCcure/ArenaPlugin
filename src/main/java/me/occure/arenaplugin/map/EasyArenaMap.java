@@ -1,11 +1,13 @@
 package me.occure.arenaplugin.map;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.BlockData;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,6 +17,7 @@ public class EasyArenaMap implements ArenaMap{
 
     private final Map<Location, BlockData> removedBlocks = new HashMap<>();
     private final WorldBorderManager worldBorderManager = new WorldBorderManager();
+    private static final Location [] corners = new Location[4];
 
     @Override
     public void setup(@NotNull Location playerLoc) {
@@ -41,6 +44,13 @@ public class EasyArenaMap implements ArenaMap{
                 }
             }
         }
+        corners[0] = arenaLoc.clone().add(-HALF_SIZE, 0, -HALF_SIZE);
+        corners[1] = arenaLoc.clone().add(HALF_SIZE, 0, -HALF_SIZE);
+        corners[2] = arenaLoc.clone().add(-HALF_SIZE, 0, HALF_SIZE);
+        corners[3] = arenaLoc.clone().add(HALF_SIZE, 0, HALF_SIZE);
+
+        Bukkit.getLogger().warning(""+ Arrays.toString(corners));
+
         worldBorderManager.setWorldBorder(playerLoc , HALF_SIZE * 2);
     }
 
@@ -49,10 +59,15 @@ public class EasyArenaMap implements ArenaMap{
         for(Map.Entry<Location, BlockData> entry: removedBlocks.entrySet()){
             Location loc = entry.getKey();
             BlockData blockData = entry.getValue();
-            Block block = loc.getBlock();
+              Block block = loc.getBlock();
             block.setBlockData(blockData);
         }
         removedBlocks.clear();
         worldBorderManager.resetWorldBorder();
+    }
+
+    public static Location[] getSpawnPoint() {
+        Bukkit.getLogger().warning("" + Arrays.toString(corners));
+        return corners;
     }
 }

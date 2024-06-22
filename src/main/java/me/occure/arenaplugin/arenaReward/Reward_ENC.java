@@ -1,4 +1,4 @@
-package me.occure.arenaplugin.ArenaReward;
+package me.occure.arenaplugin.arenaReward;
 
 
 import org.bukkit.Material;

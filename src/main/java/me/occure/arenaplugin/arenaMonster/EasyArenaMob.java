@@ -1,4 +1,4 @@
-package me.occure.arenaplugin.ArenaMonster;
+package me.occure.arenaplugin.arenaMonster;
 
 import io.lumine.mythic.api.mobs.MythicMob;
 import io.lumine.mythic.bukkit.BukkitAdapter;
@@ -6,9 +6,7 @@ import io.lumine.mythic.bukkit.MythicBukkit;
 import io.lumine.mythic.core.mobs.ActiveMob;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.entity.Entity;
 
-import java.util.List;
 import java.util.Random;
 
 

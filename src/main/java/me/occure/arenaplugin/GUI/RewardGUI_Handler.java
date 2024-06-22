@@ -1,7 +1,7 @@
 package me.occure.arenaplugin.GUI;
 
-import me.occure.arenaplugin.ArenaReward.ApplyRewardBuff;
-import me.occure.arenaplugin.ArenaReward.ApplyReward_ENC;
+import me.occure.arenaplugin.arenaReward.ApplyRewardBuff;
+import me.occure.arenaplugin.arenaReward.ApplyReward_ENC;
 
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;

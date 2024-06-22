@@ -1,4 +1,4 @@
-package me.occure.arenaplugin.ArenaReward;
+package me.occure.arenaplugin.arenaReward;
 
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
@@ -16,7 +16,11 @@ public class ApplyRewardBuff {
             case "최대 체력 증가" -> effectType = PotionEffectType.HEALTH_BOOST;
             default -> null;
         };
-        int current = 0 ;
+        if(effectType == null){
+            return;
+        }
+
+        int current = -1 ;
 
         if (player.hasPotionEffect(effectType)) {
             for(PotionEffect effect : player.getActivePotionEffects()) {
@@ -25,7 +29,7 @@ public class ApplyRewardBuff {
                 break;
             }
         }
-        player.addPotionEffect(new PotionEffect(effectType, Integer.MAX_VALUE, current));
-
+        player.removePotionEffect(effectType);
+        player.addPotionEffect(new PotionEffect(effectType, Integer.MAX_VALUE, current + 1));
     }
 }

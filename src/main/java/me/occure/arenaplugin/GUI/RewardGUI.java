@@ -1,7 +1,7 @@
 package me.occure.arenaplugin.GUI;
 
-import me.occure.arenaplugin.ArenaReward.RewardBuff;
-import me.occure.arenaplugin.ArenaReward.Reward_ENC;
+import me.occure.arenaplugin.arenaReward.RewardBuff;
+import me.occure.arenaplugin.arenaReward.Reward_ENC;
 import org.bukkit.Bukkit;
 
 import org.bukkit.entity.Player;
@@ -23,9 +23,7 @@ public class RewardGUI {
         inv.setItem(13, Reward_ENC.getRandom_ENC());
         inv.setItem(15, Reward_ENC.getRandom_ENC());
 
-        inv.setItem(29, RewardBuff.getRandomBuff());
         inv.setItem(31, RewardBuff.getRandomBuff());
-        inv.setItem(33, RewardBuff.getRandomBuff());
 
         player.openInventory(inv);
         return inv;

@@ -29,15 +29,14 @@ public class ArenaGameController implements GameController {
         Location playerLoc = arenaPlayer.getBukkitPlayer().getLocation();
         Player player =arenaPlayer.getBukkitPlayer();
         arenaMap.setup(playerLoc);
-
         arenaPlayer.setup();
-
         roundManger.startRound(player);
-
     }
 
     @Override
     public void stopGame() {
         arenaMap.clear();
+        arenaPlayer.clear();
+        RoundManger.endRound();
     }
 }

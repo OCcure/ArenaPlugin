@@ -5,7 +5,7 @@ import org.bukkit.World;
 
 public class WorldBorderManager {
 
-    private Location borderCenter = null;
+    private static Location borderCenter = null;
 
     public void setWorldBorder(Location center, int size){
         World world = center.getWorld();
@@ -15,7 +15,7 @@ public class WorldBorderManager {
             borderCenter = center;
         }
     }
-    public void resetWorldBorder(){
+    public static void resetWorldBorder(){
         if(borderCenter != null) {
             World world = borderCenter.getWorld();
             if (world != null) {

@@ -1,9 +1,6 @@
-package me.occure.arenaplugin.ArenaMonster;
+package me.occure.arenaplugin.arenaMonster;
 
 import org.bukkit.Location;
-import org.bukkit.entity.Entity;
-
-import java.util.List;
 
 public interface ArenaMob {
 

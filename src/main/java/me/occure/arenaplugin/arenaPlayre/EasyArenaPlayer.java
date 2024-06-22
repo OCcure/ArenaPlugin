@@ -5,10 +5,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.potion.PotionEffect;
 import org.jetbrains.annotations.NotNull;
 
 public class EasyArenaPlayer implements ArenaPlayer{
     private final Player player;
+    private ItemStack[] saveInv;
+    private ItemStack[] saveArmor;
 
     public EasyArenaPlayer(Player player) {
         this.player = player;
@@ -21,8 +24,11 @@ public class EasyArenaPlayer implements ArenaPlayer{
 
     @Override
     public void setup() {
+        saveInv();
+
         //기본 아이템 지급
         Inventory inv = player.getInventory();
+
 
         ItemStack arenaSword = new ItemStack(Material.DIAMOND_SWORD);
         ItemMeta swordMeta = arenaSword.getItemMeta();
@@ -43,6 +49,26 @@ public class EasyArenaPlayer implements ArenaPlayer{
 
     @Override
     public void clear() {
+        clearArenaItem();
+        restoreInv();
+        clearPotionEffects();
+    }
 
+    private void saveInv(){
+        saveInv = player.getInventory().getContents();
+        saveArmor = player.getInventory().getArmorContents();
+    }
+    private void restoreInv(){
+        player.getInventory().setContents(saveInv);
+        player.getInventory().setArmorContents(saveArmor);
+    }
+    private void clearPotionEffects() {
+        for (PotionEffect effect : player.getActivePotionEffects()){
+            player.removePotionEffect(effect.getType());
+        }
+    }
+    private void clearArenaItem(){
+        Inventory inv = player.getInventory();
+        inv.clear();
     }
 }

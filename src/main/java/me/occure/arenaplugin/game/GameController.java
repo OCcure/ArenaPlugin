@@ -7,7 +7,7 @@ public interface GameController {
 
     @NotNull ArenaPlayer getArenaPlayer();
 
-    void startGame();
+    void startGame(String difficulty);
 
     void stopGame();
 }

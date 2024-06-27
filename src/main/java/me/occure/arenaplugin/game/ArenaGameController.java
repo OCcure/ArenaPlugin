@@ -3,6 +3,7 @@ package me.occure.arenaplugin.game;
 import me.occure.arenaplugin.arenaPlayre.ArenaPlayer;
 import me.occure.arenaplugin.game.round.RoundManger;
 import me.occure.arenaplugin.map.ArenaMap;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
@@ -25,12 +26,13 @@ public class ArenaGameController implements GameController {
     }
 
     @Override
-    public void startGame() {
+    public void startGame(String difficulty) {
         Location playerLoc = arenaPlayer.getBukkitPlayer().getLocation();
-        Player player =arenaPlayer.getBukkitPlayer();
+        Player player = arenaPlayer.getBukkitPlayer();
+
         arenaMap.setup(playerLoc);
         arenaPlayer.setup();
-        roundManger.startRound(player);
+        roundManger.startRound(player, difficulty);
     }
 
     @Override

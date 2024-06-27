@@ -27,8 +27,8 @@ public class GameManager {
         RoundManger roundManger = new RoundManger();
 
         return new ArenaGameController(arenaPlayer, arenaMap,roundManger);
-
     }
+
     public static boolean hasGameController(@NotNull Player player) {
         return controllers.containsKey(player.getUniqueId());
     }

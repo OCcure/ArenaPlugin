@@ -9,4 +9,5 @@ public interface ArenaMap {
 
     void clear();
 
+
 }

@@ -16,9 +16,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class EasyArenaMap implements ArenaMap{
-
-    private static final int HALF_SIZE = 15;
+public class HardArenaMap implements ArenaMap{
+    private static final int HALF_SIZE = 10;
 
     private final Map<Location, BlockData> removedBlocks = new HashMap<>();
     private final WorldBorderManager worldBorderManager = new WorldBorderManager();
@@ -63,7 +62,7 @@ public class EasyArenaMap implements ArenaMap{
         for(Map.Entry<Location, BlockData> entry: removedBlocks.entrySet()){
             Location loc = entry.getKey();
             BlockData blockData = entry.getValue();
-              Block block = loc.getBlock();
+            Block block = loc.getBlock();
             block.setBlockData(blockData);
         }
         removedBlocks.clear();
@@ -73,7 +72,7 @@ public class EasyArenaMap implements ArenaMap{
         }
     }
 
-    public static Location[] getEasySpawnPoint() {
+    public static Location[] getHardSpawnPoint() {
         Bukkit.getLogger().warning("" + Arrays.toString(corners));
         return corners;
     }

@@ -2,35 +2,35 @@ package me.occure.arenaplugin.game.round;
 
 
 import me.occure.arenaplugin.arenaMonster.ArenaMob;
-import me.occure.arenaplugin.arenaMonster.EasyArenaMob;
-
 import me.occure.arenaplugin.data.DataManger;
 import me.occure.arenaplugin.data.PlayerData;
+import me.occure.arenaplugin.game.difficulty.MobSpawner;
+import me.occure.arenaplugin.game.difficulty.SpawnLocation;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
 import java.util.Random;
 
-import static me.occure.arenaplugin.map.EasyArenaMap.getSpawnPoint;
-
 
 public class RoundManger{
 
     private static boolean isRunning = false;
+    private static String Difficulty;
     private static int round = 0;
     private static int clearScore = 0;
     private static final Random random = new Random();
     private static Player roundStarter;
 
-
-
-    public void startRound(Player player){
+    public void startRound(Player player, String difficulty){
         if(isRunning) {
             player.sendMessage("게임이 진행중입니다.");
             return;
         }
+
         isRunning =true;
         roundStarter = player;
+        Difficulty = difficulty;
+
         nextRound();
 
     }
@@ -40,8 +40,8 @@ public class RoundManger{
         round++;
         clearScore = round * 2;
 
-        ArenaMob arenaMob = new EasyArenaMob();
-        Location[] corners = getSpawnPoint();
+        ArenaMob arenaMob = MobSpawner.spawnArenaMob(Difficulty);
+        Location[] corners = SpawnLocation.spawnLoc(Difficulty);
 
         roundStarter.sendMessage(round+"라운드 시작!" );
 
@@ -50,6 +50,7 @@ public class RoundManger{
             arenaMob.spawnMonsters(round ,spawnLoc);
         }
     }
+
     public static void endRound(){
         isRunning = false;
         RoundHandler.killCount = 0;
@@ -69,7 +70,6 @@ public class RoundManger{
     public static int getClearScore() {
         return clearScore;
     }
-
     public static Player getRoundStarter(){
         return roundStarter;
     }

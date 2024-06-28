@@ -3,7 +3,6 @@ package me.occure.arenaplugin.data;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;

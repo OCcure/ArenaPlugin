@@ -3,12 +3,14 @@ package me.occure.arenaplugin.GUI;
 import me.occure.arenaplugin.arenaReward.ApplyRewardBuff;
 import me.occure.arenaplugin.arenaReward.ApplyReward_ENC;
 
+import me.occure.arenaplugin.skill.skillItem.InvincibilityItem;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.EnchantmentStorageMeta;
 
@@ -23,6 +25,10 @@ public class RewardGUI_Handler implements Listener {
             ItemStack click = event.getCurrentItem();
             if (click != null && click.hasItemMeta()) {
                 String displayName = click.getItemMeta().getDisplayName();
+                if(click.getType() == Material.NETHER_STAR){
+                    Inventory playerInv = player.getInventory();
+                    playerInv.addItem(InvincibilityItem.createInvincibilityItem());
+                }
 
                 if (click.getType() == Material.ENCHANTED_BOOK) {
                         EnchantmentStorageMeta meta = (EnchantmentStorageMeta) click.getItemMeta();

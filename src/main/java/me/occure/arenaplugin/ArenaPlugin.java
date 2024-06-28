@@ -4,6 +4,7 @@ import me.occure.arenaplugin.GUI.RewardGUI_Handler;
 import me.occure.arenaplugin.command.ArenaCommand;
 import me.occure.arenaplugin.data.DataManger;
 import me.occure.arenaplugin.game.round.RoundHandler;
+import me.occure.arenaplugin.skill.SkillHandler;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -26,6 +27,7 @@ public final class ArenaPlugin extends JavaPlugin {
         Bukkit.getCommandMap().register("arena", new ArenaCommand("game"));
         Bukkit.getPluginManager().registerEvents(new RewardGUI_Handler(), this);
         Bukkit.getPluginManager().registerEvents(new RoundHandler(),this);
+        Bukkit.getPluginManager().registerEvents(new SkillHandler(), this);
     }
     @Override
     public void onDisable() {

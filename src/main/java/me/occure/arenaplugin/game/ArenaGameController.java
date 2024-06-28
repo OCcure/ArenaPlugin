@@ -29,7 +29,6 @@ public class ArenaGameController implements GameController {
     public void startGame(String difficulty) {
         Location playerLoc = arenaPlayer.getBukkitPlayer().getLocation();
         Player player = arenaPlayer.getBukkitPlayer();
-
         arenaMap.setup(playerLoc);
         arenaPlayer.setup();
         roundManger.startRound(player, difficulty);

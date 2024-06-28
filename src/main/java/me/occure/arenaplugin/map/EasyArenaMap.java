@@ -20,7 +20,7 @@ public class EasyArenaMap implements ArenaMap{
 
     private static final int HALF_SIZE = 15;
 
-    private final Map<Location, BlockData> removedBlocks = new HashMap<>();
+    private static final Map<Location, BlockData> removedBlocks = new HashMap<>();
     private final WorldBorderManager worldBorderManager = new WorldBorderManager();
     private static final Location [] corners = new Location[4];
     private Location arenaCenter;
@@ -71,6 +71,10 @@ public class EasyArenaMap implements ArenaMap{
         if(arenaCenter != null){
             removeEntity(arenaCenter);
         }
+    }
+
+    public static Map<Location, BlockData> getRemovedBlocks() {
+        return removedBlocks;
     }
 
     public static Location[] getEasySpawnPoint() {

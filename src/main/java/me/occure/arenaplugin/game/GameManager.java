@@ -17,11 +17,11 @@ public class GameManager {
 
     private static final Map<UUID,ArenaGameController> controllers = Maps.newHashMap();
 
-    public static @NotNull ArenaGameController getOrCreateGameController(@NotNull Player player) {
-        return controllers.computeIfAbsent(player.getUniqueId(), k -> createGameController(player));
+    public static @NotNull ArenaGameController getOrCreateGameController(@NotNull Player player, String difficulty) {
+        return controllers.computeIfAbsent(player.getUniqueId(), k -> createGameController(player, difficulty));
     }
 
-    public static @NotNull ArenaGameController createGameController(@NotNull Player player){
+    public static @NotNull ArenaGameController createGameController(@NotNull Player player, String difficulty){
         ArenaPlayer arenaPlayer = new EasyArenaPlayer(player);
         ArenaMap arenaMap = new EasyArenaMap();
         RoundManger roundManger = new RoundManger();

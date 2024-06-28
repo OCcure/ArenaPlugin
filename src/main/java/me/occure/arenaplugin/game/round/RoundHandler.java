@@ -1,6 +1,5 @@
 package me.occure.arenaplugin.game.round;
 
-
 import io.lumine.mythic.bukkit.MythicBukkit;
 import io.lumine.mythic.core.mobs.ActiveMob;
 import me.occure.arenaplugin.ArenaPlugin;
@@ -19,13 +18,15 @@ public class RoundHandler implements Listener {
 
     @EventHandler
     public void onEntityDeath(EntityDeathEvent event) {
+
         ActiveMob activeMob = MythicBukkit.inst().getMobManager().getActiveMob(event.getEntity().getUniqueId()).orElse(null);
-        Bukkit.getLogger().warning("11" + activeMob);
+
         if(!RoundManger.isRunning()){
             return;
         }
         if (activeMob != null) {
             killCount++;
+
             int clearScore = RoundManger.getClearScore();
 
             if (killCount >= clearScore) {

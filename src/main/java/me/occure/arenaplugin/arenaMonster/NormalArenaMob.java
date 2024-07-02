@@ -6,6 +6,7 @@ import io.lumine.mythic.bukkit.MythicBukkit;
 import io.lumine.mythic.core.mobs.ActiveMob;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.entity.Entity;
 
 import java.util.Random;
 
@@ -19,6 +20,10 @@ public class NormalArenaMob implements ArenaMob{
 
         if (location != null && spade != null) {
             ActiveMob spadeSoldier = spade.spawn(BukkitAdapter.adapt(location), level);
+            Entity entity = spadeSoldier.getEntity().getBukkitEntity();
+            if(entity != null){
+                entity.setCustomNameVisible(true);
+            }
         }
     }
 
@@ -26,6 +31,10 @@ public class NormalArenaMob implements ArenaMob{
 
         if (location != null) {
             ActiveMob heartSoldier = heart.spawn(BukkitAdapter.adapt(location), level);
+            Entity entity = heartSoldier.getEntity().getBukkitEntity();
+            if(entity != null){
+                entity.setCustomNameVisible(true);
+            }
         }
     }
 

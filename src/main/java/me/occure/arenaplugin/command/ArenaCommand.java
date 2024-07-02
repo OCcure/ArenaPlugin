@@ -2,10 +2,12 @@ package me.occure.arenaplugin.command;
 
 import me.occure.arenaplugin.game.ArenaGameController;
 import me.occure.arenaplugin.game.GameManager;
+import me.occure.arenaplugin.skill.skillItem.InvincibilityItem;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.defaults.BukkitCommand;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.jetbrains.annotations.NotNull;
 
 public class ArenaCommand extends BukkitCommand {
@@ -51,7 +53,12 @@ public class ArenaCommand extends BukkitCommand {
                 }
                 ArenaGameController controller = GameManager.getOrCreateGameController(player, "easy");
                 controller.stopGame();
-            }default -> player.sendMessage("올바른 명령어를 입력해주세요 : /game <start> <easy, normal, hard>, /game stop");
+            }
+            case "mm" -> {
+                player.setInvisible(false);
+
+            }
+        default -> player.sendMessage("올바른 명령어를 입력해주세요 : /game <start> <easy, normal, hard>, /game stop");
         }
         return false;
     }

@@ -29,5 +29,4 @@ public class SkillHandler implements Listener {
 
         }
     }
-
 }

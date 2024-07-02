@@ -25,18 +25,21 @@ public class EasyArenaPlayer implements ArenaPlayer{
     @Override
     public void setup() {
         saveInv();
+        clear();
 
         //기본 아이템 지급
         Inventory inv = player.getInventory();
 
 
         ItemStack arenaSword = new ItemStack(Material.DIAMOND_SWORD);
+        ItemStack meet = new ItemStack(Material.COOKED_BEEF,10);
+
         ItemMeta swordMeta = arenaSword.getItemMeta();
         swordMeta.setDisplayName("아레나 검");
         arenaSword.setItemMeta(swordMeta);
 
         inv.addItem(arenaSword);
-
+        inv.addItem(meet);
         ItemStack[] armor = {
                 new ItemStack(Material.DIAMOND_BOOTS),
                 new ItemStack(Material.DIAMOND_LEGGINGS),
